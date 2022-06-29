@@ -6,12 +6,10 @@
 
 > OdinLog 简单日志组件
 
-具体使用，请看[使用手册](https://github.com/odinsam/OdinPlugs.OdinInject/blob/master/doc/doc.md)
-
 ### changelog
 
 v1.0.0
 
 -   按照 Info Waring Error 生成对应文件夹
 -   按照 日期 归类文件夹
--   每个日志文件超过5M，生成新的日志文件
+-   每个日志文件超过 5M，生成新的日志文件
