@@ -1,6 +1,6 @@
-# OdinPlugs.OdinLog
+# OdinLog
 
-[![Nuget](https://img.shields.io/nuget/v/OdinPlugs.OdinLog)](https://www.nuget.org/packages/OdinPlugs.OdinLog/) ![Nuget](https://img.shields.io/nuget/dt/OdinPlugs.OdinLog) ![](https://img.shields.io/badge/version-1.0.6-brightgreen.svg) [![Build Status](https://travis-ci.com/odinsam/OdinPlugs.OdinLog.svg?branch=master)](https://travis-ci.com/odinsam/OdinPlugs.OdinLog) ![](https://img.shields.io/github/issues/odinsam/OdinPlugs.OdinLog) ![](https://img.shields.io/github/forks/odinsam/OdinPlugs.OdinLog) ![](https://img.shields.io/github/stars/odinsam/OdinPlugs.OdinLog) ![](https://img.shields.io/badge/platform-.Net_Core_5.0-brightgreen.svg) ![](https://img.shields.io/github/license/odinsam/OdinPlugs.OdinLog) [![](https://img.shields.io/badge/Blog-odinsam.com-blue.svg)](https://odinsam.com)
+[![Nuget](https://img.shields.io/nuget/v/OdinLog)](https://www.nuget.org/packages/OdinLog/) ![Nuget](https://img.shields.io/nuget/dt/OdinLog) ![](https://img.shields.io/badge/version-1.0.6-brightgreen.svg) [![Build Status](https://travis-ci.com/odinsam/OdinLog.svg?branch=master)](https://travis-ci.com/odinsam/OdinLog) ![](https://img.shields.io/github/issues/odinsam/OdinLog) ![](https://img.shields.io/github/forks/odinsam/OdinLog) ![](https://img.shields.io/github/stars/odinsam/OdinLog) ![](https://img.shields.io/badge/platform-.Net_Core_5.0-brightgreen.svg) ![](https://img.shields.io/github/license/odinsam/OdinLog) [![](https://img.shields.io/badge/Blog-odinsam.com-blue.svg)](https://odinsam.com)
 
 **简介:**
 
