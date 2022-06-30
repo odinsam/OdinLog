@@ -1,11 +1,12 @@
 ﻿using System;
+using OdinLog.Core.Models;
 
 namespace OdinLog.Core
 {
     public abstract class AbsOdinLogGenerate : IOdinLog
     {
         protected LogConfig _config;
-        public abstract string GenerateLog(EnumLogLevel logLevel,string logContent);
-        public abstract string GenerateLog(EnumLogLevel logLevel,Exception ex);
+        public abstract LogModel GenerateLog(EnumLogLevel logLevel,string logContent);
+        public abstract LogModel GenerateLog(EnumLogLevel logLevel,Exception ex);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using Newtonsoft.Json;
+using OdinLog.Core.Models;
 
 namespace OdinLog.Core
 {
@@ -26,13 +27,15 @@ namespace OdinLog.Core
         #endregion
 
         #region GenerateLog method
+
         /// <summary>
         /// 生成log
         /// </summary>
         /// <param name="logLevel">log等级</param>
         /// <param name="logContent">log 内容</param>
+        /// <param name="logId"></param>
         /// <returns></returns>
-        public override string GenerateLog(EnumLogLevel logLevel, string logContent)
+        public override LogModel GenerateLog(EnumLogLevel logLevel, string logContent)
         {
             return GenerateMessageLogTemplate(logLevel, logContent);
         }
@@ -42,37 +45,39 @@ namespace OdinLog.Core
         /// <param name="logLevel">log等级</param>
         /// <param name="ex">异常对象</param>
         /// <returns></returns>
-        public override string GenerateLog(EnumLogLevel logLevel, Exception ex)
+        public override LogModel GenerateLog(EnumLogLevel logLevel, Exception ex)
         {
             return GenerateExceptionLogTemplate(logLevel, ex);
         }
         #endregion
 
         #region private method
-        private string GenerateMessageLogTemplate(EnumLogLevel logLevel, string logContent)
+        private LogModel GenerateMessageLogTemplate(EnumLogLevel logLevel, string logContent)
         {
+            var logId = Guid.NewGuid().ToString("N");
             var builder = new StringBuilder();
             var separator = GenerateLogSeparator();
-            builder.Append($"【 LogId 】: {Guid.NewGuid().ToString("N")} \r\n");
+            builder.Append($"【 LogId 】: {logId} \r\n");
             builder.Append($"【 Log Level 】: {logLevel.ToString()} \r\n");
             builder.Append($"【 LogTime 】: {DateTime.Now.ToString(this._config.LogTimeFormat)} \r\n");
             builder.Append($"【 LogContent 】:\r\n{logContent}\r\n");
             builder.Append(separator + "\r\n");
             builder.Append("\r\n");
-            return builder.ToString();
+            return new LogModel{LogId = logId,LogContent = builder.ToString()};
         }
-        private string GenerateExceptionLogTemplate(EnumLogLevel logLevel, Exception ex)
+        private LogModel GenerateExceptionLogTemplate(EnumLogLevel logLevel, Exception ex)
         {
+            var logId = Guid.NewGuid().ToString("N");
             var builder = new StringBuilder();
             var separator = GenerateLogSeparator();
-            builder.Append($"【 LogId 】: {Guid.NewGuid().ToString("N")} \r\n");
+            builder.Append($"【 LogId 】: {logId} \r\n");
             builder.Append($"【 Log Level 】: {logLevel.ToString()} \r\n");
             builder.Append($"【 LogTime 】: {DateTime.Now.ToString(this._config.LogTimeFormat)} \r\n");
             builder.Append($"【 Exception Message 】: {ex.Message}\r\n");
             builder.Append($"【 Exception Info 】: \r\n{JsonConvert.SerializeObject(ex)}\r\n");
             builder.Append(separator + "\r\n");
             builder.Append("\r\n");
-            return builder.ToString();
+            return new LogModel{LogId = logId,LogContent = builder.ToString()};
         }
         private string GenerateLogSeparator()
         {

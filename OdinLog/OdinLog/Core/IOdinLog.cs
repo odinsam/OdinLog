@@ -1,10 +1,11 @@
 ﻿using System;
+using OdinLog.Core.Models;
 
 namespace OdinLog.Core
 {
     public interface IOdinLog
     {
-        string GenerateLog(EnumLogLevel logLevel, string logContent);
-        string GenerateLog(EnumLogLevel logLevel, Exception ex);
+        LogModel GenerateLog(EnumLogLevel logLevel, string logContent);
+        LogModel GenerateLog(EnumLogLevel logLevel, Exception ex);
     }
 }

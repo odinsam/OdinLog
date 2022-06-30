@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using OdinLog.Core.LogFactory.LogUtils;
+using OdinLog.Core.Models;
 
 namespace OdinLog.Core.LogFactory
 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using OdinLog.Core.Models;
 
 namespace OdinLog.Core.LogFactory
 {
@@ -10,11 +11,11 @@ namespace OdinLog.Core.LogFactory
         /// 写入日志
         /// </summary>
         /// <param name="logContent">日志信息</param>
-        void WriteLog(string logContent);
+        LogResponse WriteLog(string logContent);
         /// <summary>
         /// 写入日志
         /// </summary>
         /// <param name="exception">异常信息</param>
-        void WriteLog(Exception exception);
+        LogResponse WriteLog(Exception exception);
     }
 }

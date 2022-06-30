@@ -1,13 +1,14 @@
-﻿namespace OdinLog.Core.LogFactory
+﻿using OdinLog.Core.Models;
+
+namespace OdinLog.Core.LogFactory
 {
     public abstract class AbsLogException : AbsOdinLogException
     {
         protected AbsLogException(EnumLogLevel logLevel, LogConfig config) : base(logLevel, config)
         {
         }
-        private new void WriteLog(string logContent)
-        {
-        }
+
+        private new LogResponse WriteLog(string logContent) => null;
     }
 }
 
