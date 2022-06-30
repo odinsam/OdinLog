@@ -1,4 +1,5 @@
 ﻿using System;
+using OdinLog.Core.Models;
 
 namespace OdinLog.Core.LogFactory.LogUtils
 {
@@ -8,9 +9,6 @@ namespace OdinLog.Core.LogFactory.LogUtils
         {
         }
 
-        public override void WriteLog(Exception exception)
-        {
-            WriteLogContent(exception);
-        }
+        public override LogResponse WriteLog(Exception exception)=>WriteLogContent(exception);
     }
 }

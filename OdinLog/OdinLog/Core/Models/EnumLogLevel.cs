@@ -1,4 +1,4 @@
-﻿namespace OdinLog.Core
+﻿namespace OdinLog.Core.Models
 {
     /// <summary>
     /// Log level

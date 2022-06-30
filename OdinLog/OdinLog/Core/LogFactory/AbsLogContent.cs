@@ -1,4 +1,5 @@
 ﻿using System;
+using OdinLog.Core.Models;
 
 namespace OdinLog.Core.LogFactory
 {
@@ -7,9 +8,8 @@ namespace OdinLog.Core.LogFactory
         protected AbsLogContent(EnumLogLevel logLevel, LogConfig config) : base(logLevel, config)
         {
         }
-        private new void WriteLog(Exception exception)
-        {
-        }
+
+        private new LogResponse WriteLog(Exception exception) => null;
     }
 }
 
