@@ -8,6 +8,10 @@
 
 ### changelog
 
+v1.0.1
+
+-   添加log返回类型 LogResponse { LogId,LogLevel }
+
 v1.0.0
 
 -   按照 Info Waring Error 生成对应文件夹

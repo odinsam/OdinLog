@@ -1,4 +1,6 @@
-﻿namespace OdinLog.Core.LogFactory
+﻿using OdinLog.Core.Models;
+
+namespace OdinLog.Core.LogFactory
 {
     public abstract class AbsOdinLogException : AbsOdinLogFace
     {
@@ -6,10 +8,7 @@
         {
         }
 
-        public override void WriteLog(string logContent)
-        {
-            WriteLogContent(logContent);
-        }
+        public override LogResponse WriteLog(string logContent)=>WriteLogContent(logContent);
     }
 }
 

@@ -2,10 +2,32 @@
 
     <PropertyGroup>
         <TargetFrameworks>net5.0;net6.0;netstandard2.1</TargetFrameworks>
+        <AssemblyVersion>1.0.1</AssemblyVersion>
+        <PackageVersion>1.0.1</PackageVersion>
+        <Title>OdinLog</Title>
+        <Authors>odinsam</Authors>
+        <Description>odinsam log plug</Description>
+        <Copyright>odinsam</Copyright>
+        <PackageProjectUrl>https://github.com/odinsam/OdinLog</PackageProjectUrl>
+        <PackageIcon>avatar.jpg</PackageIcon>
+        <RepositoryUrl>https://github.com/odinsam/OdinLog</RepositoryUrl>
+        <RepositoryType>c#</RepositoryType>
+        <PackageTags>c#,net core,log,plug</PackageTags>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="avatar.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </Content>
+      <None Include="LICENSE" Pack="true" PackagePath=""/>
     </ItemGroup>
 
 </Project>

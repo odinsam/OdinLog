@@ -1,4 +1,6 @@
-﻿namespace OdinLog.Core.LogFactory.LogUtils
+﻿using OdinLog.Core.Models;
+
+namespace OdinLog.Core.LogFactory.LogUtils
 {
     public class OdinLogInfo : AbsLogContent
     {
@@ -6,9 +8,9 @@
         {
         }
 
-        public override void WriteLog(string logContent)
+        public override LogResponse WriteLog(string logContent)
         {
-            WriteLogContent(logContent);
+            return WriteLogContent(logContent);
         }
     }
 }

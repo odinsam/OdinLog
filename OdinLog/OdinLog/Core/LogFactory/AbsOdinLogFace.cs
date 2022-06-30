@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text;
+using OdinLog.Core.Models;
 
 namespace OdinLog.Core.LogFactory
 {
@@ -16,22 +17,24 @@ namespace OdinLog.Core.LogFactory
             LogLevel = logLevel;
             Config = config;
         }
-        public abstract void WriteLog(string logContent);
+        public abstract LogResponse WriteLog(string logContent);
 
-        public abstract void WriteLog(Exception exception);
+        public abstract LogResponse WriteLog(Exception exception);
 
-        protected void WriteLogContent(string logContent)
+        protected LogResponse WriteLogContent(string logContent)
         {
-            string content = OdinLogHelper.GetInstance(Config).GenerateLog(LogLevel, logContent);
+            var logInfo = OdinLogHelper.GetInstance(Config).GenerateLog(LogLevel, logContent);
             var logPath = CreateCommonDirectory();
-            WriteLog(logPath, content);
+            WriteLog(logPath, logInfo.LogContent);
+            return new LogResponse{LogId = logInfo.LogId,LogLevel = LogLevel};
         }
 
-        protected void WriteLogContent(Exception exception)
+        protected LogResponse WriteLogContent(Exception exception)
         {
-            string content = OdinLogHelper.GetInstance(Config).GenerateLog(LogLevel, exception);
+            var logInfo = OdinLogHelper.GetInstance(Config).GenerateLog(LogLevel, exception);
             var logPath = CreateCommonDirectory();
-            WriteLog(logPath, content);
+            WriteLog(logPath, logInfo.LogContent);
+            return new LogResponse{LogId = logInfo.LogId,LogLevel = LogLevel};
         }
 
         private string CreateCommonDirectory()
