@@ -8,10 +8,7 @@ namespace OdinLog.Core.LogFactory.LogUtils
         {
         }
 
-        public override LogResponse WriteLog(string logContent)
-        {
-            return WriteLogContent(logContent);
-        }
+        public override LogResponse WriteLog(LogInfo log)=>WriteLogContent(log);
     }
 }
 

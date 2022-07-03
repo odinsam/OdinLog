@@ -8,9 +8,13 @@
 
 ### changelog
 
+v1.0.2
+
+-   添加依赖注入，增加保存数据库 [详细介绍](https://odinsam.com/articles/86b2.html)
+
 v1.0.1
 
--   添加log返回类型 LogResponse { LogId,LogLevel }
+-   添加 log 返回类型 LogResponse { LogId,LogLevel }
 
 v1.0.0
 

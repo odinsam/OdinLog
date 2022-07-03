@@ -1,0 +1,39 @@
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tb_OdinLog]') AND type in (N'U')) DROP TABLE [dbo].[tb_OdinLog];
+CREATE TABLE [dbo].[tb_OdinLog](
+    Id VARCHAR(64) NOT NULL,
+    LogLevel VARCHAR(255),
+    LogContent VARCHAR(1024),
+    ExceptionInfo VARCHAR(4096),
+    Remark VARCHAR(128),
+    CreateUser VARCHAR(32),
+    CreateTime DATETIME,
+    UpdateUser VARCHAR(32),
+    UpdateTime DATETIME,
+    IsDelete INT,
+    TENANT_ID VARCHAR(32),
+    REVISION VARCHAR(32),
+    CREATED_BY VARCHAR(32),
+    CREATED_TIME DATETIME,
+    UPDATED_BY VARCHAR(32),
+    UPDATED_TIME DATETIME,
+    PRIMARY KEY (LogId)
+);
+
+EXEC sp_addextendedproperty 'MS_Description', 'OdinLog', 'SCHEMA', dbo, 'table', tb_OdinLog, null, null;
+EXEC sp_addextendedproperty 'MS_Description', 'Id主键;雪花Id', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', Id;
+EXEC sp_addextendedproperty 'MS_Description', '日志等级', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', LogLevel;
+EXEC sp_addextendedproperty 'MS_Description', '日志内容', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', LogContent;
+EXEC sp_addextendedproperty 'MS_Description', '异常详情', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', ExceptionInfo;
+EXEC sp_addextendedproperty 'MS_Description', '备注', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', Remark;
+EXEC sp_addextendedproperty 'MS_Description', '创建人', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', CreateUser;
+EXEC sp_addextendedproperty 'MS_Description', '创建时间', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', CreateTime;
+EXEC sp_addextendedproperty 'MS_Description', '更新人', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', UpdateUser;
+EXEC sp_addextendedproperty 'MS_Description', '更新时间', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', UpdateTime;
+EXEC sp_addextendedproperty 'MS_Description', '是否删除;0-未删除   1-删除', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', IsDelete;
+EXEC sp_addextendedproperty 'MS_Description', '租户号', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', TENANT_ID;
+EXEC sp_addextendedproperty 'MS_Description', '乐观锁', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', REVISION;
+EXEC sp_addextendedproperty 'MS_Description', '创建人', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', CREATED_BY;
+EXEC sp_addextendedproperty 'MS_Description', '创建时间', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', CREATED_TIME;
+EXEC sp_addextendedproperty 'MS_Description', '更新人', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', UPDATED_BY;
+EXEC sp_addextendedproperty 'MS_Description', '更新时间', 'SCHEMA', dbo, 'table', tb_OdinLog, 'column', UPDATED_TIME;
+

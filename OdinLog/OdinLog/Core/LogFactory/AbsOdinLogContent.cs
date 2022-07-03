@@ -9,7 +9,7 @@ namespace OdinLog.Core.LogFactory
         {
         }
 
-        public override LogResponse WriteLog(Exception exception) => null;
+        public override LogResponse WriteLog(LogInfo log) => null;
     }
 }
 

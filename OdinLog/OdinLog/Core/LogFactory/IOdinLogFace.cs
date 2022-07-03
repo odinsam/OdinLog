@@ -10,12 +10,7 @@ namespace OdinLog.Core.LogFactory
         /// <summary>
         /// 写入日志
         /// </summary>
-        /// <param name="logContent">日志信息</param>
-        LogResponse WriteLog(string logContent);
-        /// <summary>
-        /// 写入日志
-        /// </summary>
-        /// <param name="exception">异常信息</param>
-        LogResponse WriteLog(Exception exception);
+        /// <param name="log">log</param>
+        LogResponse WriteLog(LogInfo log);
     }
 }
