@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS tb_OdinLog;
+CREATE TABLE tb_OdinLog(
+    Id VARCHAR(64) NOT NULL   COMMENT 'Id主键;雪花Id' ,
+    LogLevel VARCHAR(255)    COMMENT '日志等级' ,
+    LogContent VARCHAR(1024)    COMMENT '日志内容' ,
+    ExceptionInfo VARCHAR(4096)    COMMENT '异常详情' ,
+    Remark VARCHAR(128)    COMMENT '备注' ,
+    CreateUser VARCHAR(32)    COMMENT '创建人' ,
+    CreateTime DATETIME    COMMENT '创建时间' ,
+    UpdateUser VARCHAR(32)    COMMENT '更新人' ,
+    UpdateTime DATETIME    COMMENT '更新时间' ,
+    IsDelete INT    COMMENT '是否删除;0-未删除   1-删除' ,
+    TENANT_ID VARCHAR(32)    COMMENT '租户号' ,
+    REVISION VARCHAR(32)    COMMENT '乐观锁' ,
+    CREATED_BY VARCHAR(32)    COMMENT '创建人' ,
+    CREATED_TIME DATETIME    COMMENT '创建时间' ,
+    UPDATED_BY VARCHAR(32)    COMMENT '更新人' ,
+    UPDATED_TIME DATETIME    COMMENT '更新时间' ,
+    PRIMARY KEY (LogId)
+)  COMMENT = 'OdinLog';
+

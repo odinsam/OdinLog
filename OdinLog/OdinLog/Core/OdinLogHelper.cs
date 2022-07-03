@@ -2,11 +2,13 @@
 using System.Text;
 using Newtonsoft.Json;
 using OdinLog.Core.Models;
+using OdinLog.OdinUtils;
 
 namespace OdinLog.Core
 {
     public class OdinLogHelper : AbsOdinLogGenerate
     {
+        
         #region 构造函数
         private static readonly Lazy<OdinLogHelper> Single = new Lazy<OdinLogHelper>(() => new OdinLogHelper());
         private OdinLogHelper()
@@ -32,52 +34,36 @@ namespace OdinLog.Core
         /// 生成log
         /// </summary>
         /// <param name="logLevel">log等级</param>
-        /// <param name="logContent">log 内容</param>
-        /// <param name="logId"></param>
+        /// <param name="log">log</param>
         /// <returns></returns>
-        public override LogModel GenerateLog(EnumLogLevel logLevel, string logContent)
+        public override LogModel GenerateLog(EnumLogLevel logLevel,LogInfo log)
         {
-            return GenerateMessageLogTemplate(logLevel, logContent);
-        }
-        /// <summary>
-        /// 生成log
-        /// </summary>
-        /// <param name="logLevel">log等级</param>
-        /// <param name="ex">异常对象</param>
-        /// <returns></returns>
-        public override LogModel GenerateLog(EnumLogLevel logLevel, Exception ex)
-        {
-            return GenerateExceptionLogTemplate(logLevel, ex);
+            return GenerateMessageLogTemplate(logLevel, log);
         }
         #endregion
 
         #region private method
-        private LogModel GenerateMessageLogTemplate(EnumLogLevel logLevel, string logContent)
+        private LogModel GenerateMessageLogTemplate(EnumLogLevel logLevel, LogInfo log)
         {
-            var logId = Guid.NewGuid().ToString("N");
+            var logid = log.LogId!=null? log.LogId.ToString() : Guid.NewGuid().ToString("N");
             var builder = new StringBuilder();
             var separator = GenerateLogSeparator();
-            builder.Append($"【 LogId 】: {logId} \r\n");
+            builder.Append($"【 LogId 】: {logid} \r\n");
             builder.Append($"【 Log Level 】: {logLevel.ToString()} \r\n");
             builder.Append($"【 LogTime 】: {DateTime.Now.ToString(this._config.LogTimeFormat)} \r\n");
-            builder.Append($"【 LogContent 】:\r\n{logContent}\r\n");
+            if (log is ExceptionLog)
+            {
+                builder.Append($"【 Exception Message 】: {(log as ExceptionLog).LogException.Message}\r\n");
+                var ex = (log as ExceptionLog).LogException;
+                builder.Append($"【 Exception Info 】: \r\n{JsonConvert.SerializeObject(ex).ToJsonFormatString()}\r\n");
+            }
+            else
+            {
+                builder.Append($"【 LogContent 】:\r\n{log.LogContent}\r\n");
+            }
             builder.Append(separator + "\r\n");
             builder.Append("\r\n");
-            return new LogModel{LogId = logId,LogContent = builder.ToString()};
-        }
-        private LogModel GenerateExceptionLogTemplate(EnumLogLevel logLevel, Exception ex)
-        {
-            var logId = Guid.NewGuid().ToString("N");
-            var builder = new StringBuilder();
-            var separator = GenerateLogSeparator();
-            builder.Append($"【 LogId 】: {logId} \r\n");
-            builder.Append($"【 Log Level 】: {logLevel.ToString()} \r\n");
-            builder.Append($"【 LogTime 】: {DateTime.Now.ToString(this._config.LogTimeFormat)} \r\n");
-            builder.Append($"【 Exception Message 】: {ex.Message}\r\n");
-            builder.Append($"【 Exception Info 】: \r\n{JsonConvert.SerializeObject(ex)}\r\n");
-            builder.Append(separator + "\r\n");
-            builder.Append("\r\n");
-            return new LogModel{LogId = logId,LogContent = builder.ToString()};
+            return new LogModel{LogId = logid,LogContent = builder.ToString()};
         }
         private string GenerateLogSeparator()
         {

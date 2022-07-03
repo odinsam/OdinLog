@@ -9,6 +9,6 @@ namespace OdinLog.Core.LogFactory.LogUtils
         {
         }
 
-        public override LogResponse WriteLog(Exception exception)=>WriteLogContent(exception);
+        public override LogResponse WriteLog(LogInfo log)=>WriteLogContent(log);
     }
 }

@@ -5,7 +5,6 @@ namespace OdinLog.Core
 {
     public interface IOdinLog
     {
-        LogModel GenerateLog(EnumLogLevel logLevel, string logContent);
-        LogModel GenerateLog(EnumLogLevel logLevel, Exception ex);
+        LogModel GenerateLog(EnumLogLevel logLevel, LogInfo log);
     }
 }
